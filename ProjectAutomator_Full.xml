@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeployerSpec exitOnError="true" sourceType="Repository">
+        <DeployerServer>
+                <host>localhost:5555</host>
+                <user>Administrator</user>
+                <pwd>manage</pwd>
+        </DeployerServer>
+        <Environment>
+                <Repository>
+                        <repalias name="FHB_REPOSITORY">
+                        <type>FlatFile</type>
+                        <urlOrDirectory>/opt/CI/builds</urlOrDirectory>
+                        <createIndex>false</createIndex>
+                        <Test>false</Test>
+                        </repalias>
+                </Repository>
+                <IS>
+                        <isalias name="FHBTEST">
+                                        <host>vvaipresal32992.eur.ad.sag</host>
+                                        <port>5555</port>
+                                        <user>Administrator</user>
+                                        <pwd>manage</pwd>
+                                        <useSSL>false</useSSL>
+                                        <version>10.3</version>
+                                        <installDeployerResource>true</installDeployerResource>
+                                        <Test>false</Test>
+                                        <executeACL>Administrators</executeACL>
+                        </isalias>
+                </IS>
+        </Environment>
+<Projects projectPrefix="">
+        <Project description="" name="FHB_PROJECT" overwrite="true" type="Repository">
+                <ProjectProperties>
+                <Property name="projectLocking">false</Property>
+                <Property name="concurrentDeployment">true</Property>
+                <Property name="ignoreMissingDependencies">true</Property>
+                <Property name="isTransactionalDeployment">true</Property>
+                </ProjectProperties>
+                <DeploymentSet autoResolve="full" description="" name="FHB_DEPLOYMENTSET" srcAlias="FHB_REPOSITORY">
+                <Composite displayName="Fibonachi" name="Fibonachi" srcAlias="FHB_REPOSITORY" type="IS"/>
+                <Composite displayName="Employee" name="Employee" srcAlias="FHB_REPOSITORY" type="IS"/>
+                <Composite displayName="Customers" name="Customers" srcAlias="FHB_REPOSITORY" type="IS"/>
+                 </DeploymentSet>
+                <DeploymentMap description="" name="FHB_DEPLOYMENTMAP"/>
+                        <MapSetMapping mapName="FHB_DEPLOYMENTMAP" setName="FHB_DEPLOYMENTSET">
+                                <alias type="IS">FHBTEST</alias> 
+                        </MapSetMapping>
+                <DeploymentCandidate description="" mapName="FHB_DEPLOYMENTMAP" name="FHB_DEPLOYMENTCANDIDATE"/>
+        </Project>
+</Projects>
+</DeployerSpec>

@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "9b5e556a-b6d4-443b-9f56-45c80264c720",
+		"name": "CustomerApiDesciptor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customers-GetAllCustomers",
+			"item": [
+				{
+					"name": "local-withoutalias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5554/rad/Customers.apis:CustomerApiDescriptor/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5554",
+							"path": [
+								"rad",
+								"Customers.apis:CustomerApiDescriptor",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "k8cluster-withoutalias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://demo-maam.daeidemo02.k8s.eur.ad.sag/rad/Customers.apis:CustomerApiDescriptor/customers",
+							"protocol": "http",
+							"host": [
+								"demo-maam",
+								"daeidemo02",
+								"k8s",
+								"eur",
+								"ad",
+								"sag"
+							],
+							"path": [
+								"rad",
+								"Customers.apis:CustomerApiDescriptor",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "local-alias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5554/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5554",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "k8cluster-alias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://demo-maam.daeidemo02.k8s.eur.ad.sag/rad/Customers.apis:CustomerApiDescriptor/customers",
+							"protocol": "http",
+							"host": [
+								"demo-maam",
+								"daeidemo02",
+								"k8s",
+								"eur",
+								"ad",
+								"sag"
+							],
+							"path": [
+								"rad",
+								"Customers.apis:CustomerApiDescriptor",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for customers"
+		},
+		{
+			"name": "customer-GetSingleCustomer",
+			"item": [
+				{
+					"name": "local-withoutalias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5554/rad/Customers.apis:CustomerApiDescriptor/customer/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5554",
+							"path": [
+								"rad",
+								"Customers.apis:CustomerApiDescriptor",
+								"customer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "k8cluster-withoutalias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://demo-maam.daeidemo02.k8s.eur.ad.sag/rad/Customers.apis:CustomerApiDescriptor/customer/:id",
+							"protocol": "http",
+							"host": [
+								"demo-maam",
+								"daeidemo02",
+								"k8s",
+								"eur",
+								"ad",
+								"sag"
+							],
+							"path": [
+								"rad",
+								"Customers.apis:CustomerApiDescriptor",
+								"customer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "local-alias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://vvaipresal31826.eur.ad.sag:5555/customerid/1",
+							"protocol": "http",
+							"host": [
+								"vvaipresal31826",
+								"eur",
+								"ad",
+								"sag"
+							],
+							"port": "5555",
+							"path": [
+								"customerid",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "k8cluster-alias",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Administrator",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://demo-maam.daeidemo02.k8s.eur.ad.sag/customerid/1",
+							"protocol": "http",
+							"host": [
+								"demo-maam",
+								"daeidemo02",
+								"k8s",
+								"eur",
+								"ad",
+								"sag"
+							],
+							"path": [
+								"customerid",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for customer"
+		}
+	]
+}

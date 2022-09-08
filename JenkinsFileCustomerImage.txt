@@ -8,7 +8,7 @@ pipeline {
         }
 	stage('Copy Packages from Git'){
 		steps{
-		sh '${WORKSPACE}/CopyPackageToVM.sh'
+		sh '${WORKSPACE}/CopyCustomerPackageToVM.sh'
 	    }
 	}
 	stage('Create Customer docker files'){

@@ -1,6 +1,16 @@
 pipeline {
     agent any
 	stages {
+	stage('Initialize'){
+            steps {
+                sh 'chmod -R 777 ${WORKSPACE}'
+            }
+        }
+	stage('Copy Packages from Git'){
+		steps{
+		sh '${WORKSPACE}/CopyEmployeePackageToVM.sh'
+	    }
+	}
 	stage('Create Employee docker files'){
             steps {
 		sh "${MSR_TARGET_DOCKER}/is_container.sh createPackageDockerfile -Dimage.name=is:msr -Dpackage.list=Employee -Dfile.name=EmployeeMSR"

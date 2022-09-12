@@ -9,22 +9,22 @@ pipeline {
 	stage('Create Template'){
             steps {
                 sh ("""
-		sed -i 's/DOCKERREPO/'"$DOCKERREPO"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'docker.io/pbrosi/is'/'"$DOCKERREPO"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/IMAGETAG/'"$IMAGETAG"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'CUST'/'"$IMAGETAG"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/APPNAME/'"$APPNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'msr-customer'/'"$APPNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/SERVICENAME/'"$SERVICENAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'msr-service'/'"$SERVICENAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/ENDPOINT/'"$ENDPOINT"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'msr-endpoint'/'"$ENDPOINT"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/DEPLOYMENTNAME/'"$DEPLOYMENTNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/'customer-msr'/'"$DEPLOYMENTNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
             }
         }

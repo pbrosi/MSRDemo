@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+    	stage('Initialize'){
+            steps {
+                sh 'chmod -R 777 ${WORKSPACE}'
+            }
+        }
+	stage('Clean docker build file'){
+            steps {
+		cp "Dockerfile.UM  ${UM_TARGET_DOCKER}/Dockerfile.UM"
+                cp "uminitialize.sh ${UM_TARGET_DOCKER}/uminitialize.sh"
+                cp "umstart.sh ${UM_TARGET_DOCKER}/umstart.sh"
+                cp "configure.sh ${UM_TARGET_DOCKER}/configure.sh"
+                sh "rm ${UM_TARGET_DOCKER}/.dockerignore"
+            }
+        }
+	stage('Build UM image'){
+            steps {
+                sh "docker build -f ${UM_TARGET_DOCKER}/Dockerfile.UM build --tag ${UM_TAG} ${UM_TARGET_DOCKER}"
+            }
+        }
+	stage('Push Base image to docker registry'){
+            steps {
+                sh 'docker push ${UM_TAG}'
+		echo "Uploaded Base UM image built successfully"
+		}
+	}
+     
+    }
+}

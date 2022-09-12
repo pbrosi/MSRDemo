@@ -1,0 +1,53 @@
+
+apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+
+kind: StatefulSet
+metadata:
+  name: um-deployment
+  namespace: default
+  labels:
+   app: um-customer
+spec:
+  serviceName: "um-service"
+  replicas: 1 # tells deployment to run 1 pod matching the template
+  selector:
+    matchLabels:
+      app: um-customer
+  template: # create pods using pod definition in this template
+    metadata:
+        labels:
+          app: um-customer
+    spec:
+      containers:
+      - name: customer-universalmessaging
+        image: docker.io/pbrosi/umserver:dev
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - name: umdata
+          mountPath: /opt/softwareag/UniversalMessaging/server/umserver/data
+  volumeClaimTemplates:
+  - metadata: 
+      name: umdata
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: "longhorn"
+      resources:
+        requests: 
+          storage: 10Gi
+
+---
+kind: Service
+apiVersion: v1	
+metadata:
+  name: um-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: um-customer
+  ports:
+  - protocol: TCP
+    port: 9000
+    targetPort: 9000

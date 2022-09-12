@@ -6,25 +6,26 @@ pipeline {
                 sh 'chmod -R 777 ${WORKSPACE}'
             }
         }
+
 	stage('Create Template'){
             steps {
                 sh ("""
-		sed -i 's/'docker.io/pbrosi/is'/'"$DOCKERREPO"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/DOCKERREPO/'"docker.io/pbrosi/is"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/'CUST'/'"$IMAGETAG"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/IMAGETAG/'"CUST"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/'msr-customer'/'"$APPNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/APPNAME/'"msr-app"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/'msr-service'/'"$SERVICENAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/SERVICENAME/'"msr-service"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/'msr-endpoint'/'"$ENDPOINT"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/ENDPOINT/'"msr-endpoint"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
 		sh ("""
-		sed -i 's/'customer-msr'/'"$DEPLOYMENTNAME"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
+		sed -i 's/DEPLOYMENTNAME/'"msr-deployment"'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
 		""")
             }
         }

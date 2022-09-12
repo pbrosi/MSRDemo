@@ -17,12 +17,25 @@ spec:
         labels:
           app: msr-customer
     spec:
-      containers:
-      - name: customer-ismicroservicesruntime
+      containers:      
+      - env:
+        - name: SAG_IS_CONFIG_PROPERTIES
+          value: /opt/softwareag/msr-config/configuration
+        name: customer-ismicroservicesruntime        
         image: docker.io/pbrosi/is:CUST
         imagePullPolicy: IfNotPresent        
         ports:
         - containerPort: 5555
+        volumeMounts:
+        - mountPath: /opt/softwareag/msr-config
+          name: vol-cz6z7
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: msr-config
+          optional: false
+        name: vol-cz6z7
+
 ---
 kind: Service
 apiVersion: v1	

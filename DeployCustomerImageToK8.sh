@@ -1,5 +1,5 @@
 #!/bin/sh
 #
 
-yes | rancher login ${RANCHER_URL} --token ${RANCHER_TOKEN}
-rancher kubectl create -f ${WORKSPACE}/PushCustomerImageToK8.yaml 
+yes | /usr/local/bin/rancher login ${RANCHER_URL} --token ${RANCHER_TOKEN}
+/usr/local/bin/rancher kubectl create -f ${WORKSPACE}/PushCustomerImageToK8.yaml 

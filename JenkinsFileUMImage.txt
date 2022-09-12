@@ -8,10 +8,10 @@ pipeline {
         }
 	stage('Clean docker build file'){
             steps {
-		cp "Dockerfile.UM  ${UM_TARGET_DOCKER}/Dockerfile.UM"
-                cp "uminitialize.sh ${UM_TARGET_DOCKER}/uminitialize.sh"
-                cp "umstart.sh ${UM_TARGET_DOCKER}/umstart.sh"
-                cp "configure.sh ${UM_TARGET_DOCKER}/configure.sh"
+		cp "${WORKSPACE}/Dockerfile.UM  ${UM_TARGET_DOCKER}/Dockerfile.UM"
+                cp "${WORKSPACE}/uminitialize.sh ${UM_TARGET_DOCKER}/uminitialize.sh"
+                cp "${WORKSPACE}/umstart.sh ${UM_TARGET_DOCKER}/umstart.sh"
+                cp "${WORKSPACE}/configure.sh ${UM_TARGET_DOCKER}/configure.sh"
                 sh "rm ${UM_TARGET_DOCKER}/.dockerignore"
             }
         }

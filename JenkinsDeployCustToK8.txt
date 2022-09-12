@@ -9,24 +9,7 @@ pipeline {
 
 	stage('Create Template'){
             steps {
-                sh ("""
-		sed -i 's/DOCKERREPO/'docker.io/pbrosi/is'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
-		sh ("""
-		sed -i 's/IMAGETAG/'CUST'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
-		sh ("""
-		sed -i 's/APPNAME/'msr-app'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
-		sh ("""
-		sed -i 's/SERVICENAME/'msr-service'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
-		sh ("""
-		sed -i 's/ENDPOINT/'msr-endpoint'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
-		sh ("""
-		sed -i 's/DEPLOYMENTNAME/'msr-deployment'/g'  ${WORKSPACE}/PushCustomerImageToK8.yaml
-		""")
+	 	echo "Done"
             }
         }
 	

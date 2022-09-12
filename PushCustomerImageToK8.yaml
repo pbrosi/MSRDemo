@@ -3,23 +3,23 @@ apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
 
 kind: Deployment
 metadata:
-  name: DEPLOYMENTNAME
+  name: msr-deployment
   namespace: dhl-default
   labels:
-   app: APPNAME
+   app: msr-customer
 spec:
   replicas: 1 # tells deployment to run 1 pod matching the template
   selector:
     matchLabels:
-      app: APPNAME
+      app: msr-customer
   template: # create pods using pod definition in this template
     metadata:
         labels:
-          app: APPNAME
+          app: msr-customer
     spec:
       containers:
       - name: customer-ismicroservicesruntime
-        image: DOCKERREPO/IMAGETAG
+        image: docker.io/pbrosi/is:CUST
         imagePullPolicy: IfNotPresent        
         ports:
         - containerPort: 5555
@@ -27,12 +27,12 @@ spec:
 kind: Service
 apiVersion: v1	
 metadata:
-  name: SERVICENAME
+  name: msr-service
   namespace: dhl-default
 spec:
   type: ClusterIP
   selector:
-    app: APPNAME
+    app: msr-customer
   ports:
   - protocol: TCP
     port: 5555
@@ -41,20 +41,20 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: SERVICENAME
+  name: msr-service
   namespace: dhl-default
 spec:	
   rules:
-  - host: ENDPOINT.192.168.26.132.sslip.io
+  - host: msr-ep.192.168.26.132.sslip.io
     http:
       paths:
       - backend:
-          serviceName: SERVICENAME
+          serviceName: msr-service
           servicePort: 5555
         path: /
   tls:
   - hosts:
-    - ENDPOINT.192.168.26.132.sslip.io
+    - msr-ep.192.168.26.132.sslip.io
     secretName: dhl-secret
  
 

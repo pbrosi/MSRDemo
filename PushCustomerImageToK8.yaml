@@ -4,7 +4,7 @@ apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
 kind: Deployment
 metadata:
   name: DEPLOYMENTNAME
-  namespace: presales-default
+  namespace: dhl-default
   labels:
    app: APPNAME
 spec:
@@ -23,14 +23,12 @@ spec:
         imagePullPolicy: IfNotPresent        
         ports:
         - containerPort: 5555
-      imagePullSecrets:
-        - name: acctest
 ---
 kind: Service
 apiVersion: v1	
 metadata:
   name: SERVICENAME
-  namespace: presales-default
+  namespace: dhl-default
 spec:
   type: ClusterIP
   selector:
@@ -44,10 +42,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: SERVICENAME
-  namespace: presales-default
+  namespace: dhl-default
 spec:	
   rules:
-  - host: ENDPOINT.daeipresal51397.eur.ad.sag
+  - host: ENDPOINT.192.168.26.132.sslip.io
     http:
       paths:
       - backend:
@@ -56,7 +54,7 @@ spec:
         path: /
   tls:
   - hosts:
-    - ENDPOINT.daeipresal51397.eur.ad.sag
-    secretName: daeipresal51397
+    - ENDPOINT.192.168.26.132.sslip.io
+    secretName: dhl-secret
  
 
